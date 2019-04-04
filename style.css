@@ -1,0 +1,220 @@
+/* Основные настройки страницы*/
+*{
+    background: #1c1c1c;
+    box-sizing: border-box;
+}
+body{
+    line-height: 1.5;
+    font-size: 16px;
+    font-family: Roboto, sans-serif;
+    width: 1280px;
+    min-height: 720px;
+    margin: 0 auto;
+}
+/* Конфигурации заголовка - лого */
+.header {
+    width: 148px;
+    height: 28px;
+    margin: 80px auto 0;
+}
+/* Конфигурации строки поиска и истории  */
+.search {
+    display: grid;
+    justify-content: center;
+}
+.search .search_input {
+    width: 1280px;
+    height: 74px;
+    margin-top: 54px;
+    padding: 18px 53px 20px 60px;
+
+    background-color: #1c1c1c;
+    border: none;
+    border-bottom: 2px solid #fdce25;
+    border-radius: 2px;
+    outline: none;
+    color: #ffffff;
+
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+.search_input::placeholder {
+    line-height: 36px;
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.4);
+}
+.search_input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    content: url('image/close.svg');
+    cursor: pointer;
+}
+.search_input::-webkit-search-cancel-button:hover {
+    content: url('image/close-hover.svg');
+}
+.search:before {
+    position: absolute;
+    content: url('image/search.svg');
+    visibility: visible;
+    padding-left: 8px;
+    top: 182px;
+    transition: 0.5s ease-in-out;
+}
+.history {
+    width: 100%;
+    height: 60px;
+    transition: 0.5s ease-in-out;
+    overflow: hidden;
+
+}
+.history_element {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    padding: 6px 16px;
+    margin-top: 15px;
+    margin-right:6px;
+    line-height: 24px;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+}
+.history_element:hover {
+    background-color: #ffffff;
+}
+
+/* Конфигурации результатов поиска - карточек фильмов */
+.result {
+    width: 1280px;
+    margin: 0 auto;
+    min-height: 50px;
+}
+movie-card {
+    width: 302px;
+    height: 454px;
+}
+ .title_result {
+     margin-top: 56px;
+    width: 604px;
+    height: 48px;
+
+    font-weight: 900;
+    line-height: 1.333333;
+    font-size: 2.25rem;
+    color: #ffffff;
+}
+.result_grid {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: repeat(4, 302px);
+    gap: 24px;
+}
+/* Конфигурации подвала */
+.footer {
+    margin-top: 80px;
+    height: 15px;
+    margin-bottom: 16px;
+    text-align: center;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+/* Прокрутка страницы */
+.search_scroll {
+    position: fixed;
+    justify-content: normal;
+    top: 0;
+    width: 100%;
+    left: 0;
+    z-index: 10;
+}
+.search_scroll .search_input {
+    width: 100%;
+    margin-top: 0;
+    background-color: rgba(28, 28, 28, 0.8);
+    border: none;
+    backdrop-filter: blur(4px);
+    border-bottom: 2px solid white;
+
+    height: 74px;
+    padding: 18px 53px 20px 60px;
+
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #ffffff;
+    outline:none;
+
+}
+.search_scroll .history_element {
+    margin-left: 8px;
+}
+
+.search_scroll .history_element:before {
+    top: 20px;
+}
+
+.search_scroll:before {
+    position: absolute;
+    content: url('image/search.svg');
+    visibility: visible;
+    padding-left: 20px;
+    top: 20px;
+    /*transition: 0.5s ease-in-out;*/
+}
+/* Начало всего */
+.search_begin {
+    display: grid;
+    justify-content: center;
+}
+.search_begin .search_input {
+    width: 800px;
+    height: 74px;
+    margin-top: 54px;
+    padding: 20px 50px ;
+
+    background-color: #1c1c1c;
+    border: none;
+    border-bottom: 2px solid green;
+    border-radius: 2px;
+    outline: none;
+    color: #ffffff;
+
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-align: center;
+}
+.search_begin:before {
+    position: relative;
+    content: url('image/search.svg');
+    visibility: visible;
+    padding-left: 8px;
+    top: 110px;
+    transition: 0.5s ease-in-out;
+}
+.search_begin .history{
+    display: none;
+}
+.title_result_begin{
+    margin: 56px auto ;
+    width: 604px;
+    height: 48px;
+    padding-left: 10px;
+
+    font-weight: 900;
+    line-height: 1.333333;
+    font-size: 2.25rem;
+    color: #ffffff;
+}
+.history_fire {
+    display: inline-block;
+    background-color: #6a7b5d;
+    border-radius: 4px;
+    padding: 6px 16px;
+    margin-top: 15px;
+    margin-right:6px;
+    margin-left:6px;
+    line-height: 24px;
+    font-size: 16px;
+    cursor: crosshair;
+}
+.history_water{
+    display: none;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework2</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="loader.css" />
+    <link
+        href="http://fonts.googleapis.com/css?family=Roboto"
+        rel="stylesheet"
+        type="text/css"
+    />
+</head>
+    <body>
+        <!-------------------------HEADER--------------------------->
+        <header class="header">
+            <img class="header__logo" src="image/logo.svg" alt="logo"/>
+        </header>
+        <!--------------------------MAIN---------------------------->
+        <div class="main">
+            <!-----------------SEARCH------------------>
+                <form class="search_begin">
+                    <label>
+                        <input
+                                class="search_input"
+                                type="search"
+                                placeholder="Поиск фильмов по жанрам и актерам"
+                                autocomplete="off"
+                                name="search"
+                        />
+                    </label>
+                    <!-----------------HISTORY------------------>
+                    <div class="history">
+                        <!-----------------все испепеляющий огонь для истории------------------>
+                        <span class="history_water">&#128293;</span>
+                    </div>
+                </form>
+            <!-----------------RESULT------------------>
+                <div class="result">
+                    <div class="title_result_begin">&#9731;   Приветствую тебя подаван   &#9731;</div>
+                    <div class="result_grid"> </div>
+                </div>
+            <!-----------------LOADER------------------>
+            <div class="loader_hidden">
+                <div><div></div></div>
+                <div><div></div></div>
+                <div><div></div></div>
+                <div><div></div></div>
+                <div><div></div></div>
+            </div>
+        </div>
+        <!---------------------------FOOTER--------------------------->
+        <div class="footer">&copy;2019 Тинькофф Прокат</div>
+        <!---------------------------script--------------------------->
+        <script src="index.js" type="module"></script>
+    </body>
+</html>
