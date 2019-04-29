@@ -42,15 +42,14 @@ const search = async (searchTerm) => {
     LastsearchStatus=0;
     //включаем лоадер
     Loader.className = 'lds-ellipsis';
-    const { Search } = await fetch(
-        `http://www.omdbapi.com/?apikey=5c068a71&type=movie&s=${searchTerm}`,{signal}
+    const { Search , totalResults } = await fetch(
+        `http://www.omdbapi.com/?apikey=5c068a71&type=movie&s=${searchTerm}&page=1`,{signal}
     ).then((r) => r.json()).finally(() => LastsearchStatus=1);
-    console.log(Search);
     if(!Search) {
         result.innerHTML = 'Мы не поняли о чем речь ¯\\_(ツ)_/¯'
     }
     else {
-        result.innerHTML = 'Найдено ' + Search.length + ' фильмов';
+        result.innerHTML = 'Найдено ' + totalResults + ' фильмов';
         const movies = Search.map((result) => render(mapMovie(result)));
         const fragment = document.createDocumentFragment();
         movies.forEach((movie) => fragment.appendChild(movie));
@@ -126,12 +125,27 @@ function flowInput(){
 
 }
 //это событие на скрол страницы, чтобы стиль поиска менялся
+let Page = 2;
 window.onscroll = function() {
     let scrolled = window.pageYOffset || document.documentElement.scrollTop;
     if (scrolled > 50) {
         form.className = 'search_scroll';
     }
     else {form.className = 'search';}
+    console.log(scrolled);
+    while(scrolled>Page*300){
+       searchAdd(input.value,Page);
+        Page +=1;
+    }
+};
+const searchAdd = async (searchTerm,page) => {
+    const { Search } = await fetch(
+        `http://www.omdbapi.com/?apikey=5c068a71&type=movie&s=${searchTerm}&page=${page}`)
+        .then((r) => r.json());
+        const movies = Search.map((result) => render(mapMovie(result)));
+        const fragment = document.createDocumentFragment();
+        movies.forEach((movie) => fragment.appendChild(movie));
+        resultsContainer.appendChild(fragment);
 };
 //переход от 1 стиля ко 2
 form.onclick = function() {
@@ -172,6 +186,8 @@ history.addEventListener('click',function (e) {
                 input.value = event.target.innerHTML;
                 history.insertBefore(event.target, history.children[1]);
                 moveElem(event.target,'move');
+                input.value = event.target.innerHTML;
+                console.log(input.value);
                 search(event.target.innerHTML);
             }
         }
